@@ -1,0 +1,18 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Welcome to Sober Company</h1>
+    <p>Best Coffee Cocktails in Shanghai</p>
+    <a class="btn btn-flat" href="#">Discover More</a>
+  </div>
+</div>
+<table>
+  <tbody>
+    <% @cocktails.each do |cocktail| %>
+      <tr>
+        <td><%= cocktail.name %></td>
+        <td><%= link_to 'Show', cocktail %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<td><%= link_to 'Add cocktail',  new_cocktail_path %></td>
