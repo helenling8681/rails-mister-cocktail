@@ -1,18 +1,22 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dbfz1zsje/image/upload/v1596170800/cocktail1.jpg')">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dbfz1zsje/image/upload/v1596170805/collection.jpg')">
   <div class="container">
     <h1>Welcome to Sober Company</h1>
     <p>Best Coffee Cocktails in Shanghai</p>
-    <a class="btn btn-flat" href="#">Discover More</a>
   </div>
 </div>
-<table>
-  <tbody>
+<div class="container">
+  <div class="row py-4">
     <% @cocktails.each do |cocktail| %>
-      <tr>
-        <td><%= cocktail.name %></td>
-        <td><%= link_to 'Show', cocktail %></td>
-      </tr>
+    <% url = cocktail.id == 5 ? "https://res.cloudinary.com/dbfz1zsje/image/upload/v1596170665/cocktail5.jpg" : "https://res.cloudinary.com/dbfz1zsje/image/upload/v1596170800/cocktail#{cocktail.id}.jpg"%>
+      <div class="col-xs-12 col-sm-6">
+        <%= link_to cocktail do %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= url %>)">
+            <%= cocktail.name %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
-  </tbody>
-</table>
-<td><%= link_to 'Add cocktail',  new_cocktail_path %></td>
+  </div>
+</div>
+<a class="button" href= <%=new_cocktail_path %>>Add cocktail</a>
+

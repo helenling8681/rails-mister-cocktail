@@ -1,14 +1,28 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= "https://res.cloudinary.com/dbfz1zsje/image/upload/v1596170800/cocktail#{@cocktail.id}.jpg"%>)">
+<div class = "description">
 <p>
   <strong>Name:</strong>
   <%= @cocktail.name %>
-  <% @cocktail.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
 </p>
-<% @cocktail.doses.each do |dose| %>
-  <p><%= dose.description %> - <%= dose.ingredient.name %></p>
-  <%= link_to "delete", dose_path(dose),method: :delete %>
-<% end %>
-<%= link_to 'Back', cocktails_path %>
-<%= link_to 'Add a dose', new_cocktail_dose_path(@cocktail) %>
+  <% @cocktail.doses.each do |dose| %>
+    <p><%= dose.description %> - <%= dose.ingredient.name %></p>
+    <%= link_to dose_path(dose), method: :delete do %>
+      <button class="button">Delete this dose</button>
+    <% end %>
+  <% end %>
+</div>
+<div class="d-flex justify-content-center">
+
+  <%= link_to new_cocktail_dose_path(@cocktail) do %>
+    <button class="button">Add a dose</button>
+  <% end %>
+<%= link_to cocktails_path do%>
+    <button class="button">Back</button>
+  <% end %>
+</div>
+<br />
+
+
+
+
 
